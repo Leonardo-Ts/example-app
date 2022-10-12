@@ -1,0 +1,111 @@
+<script src="https://unpkg.com/vue@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+
+<div id="app">
+	<table border="1">
+		Boletos
+		<thead>
+			<th>Aereolinea</th>
+			<th>Fecha Compra</th>
+			<th>Fecha Llegada</th>
+			<th>Número de asiento</th>
+			<th>Precio</th>
+			<th>Origen</th>
+			<th>Destino</th>
+
+		</thead>
+
+		<tbody>
+			<tr v-for="item in info">
+				<td> {{item.Aerolinea}} </td>
+				<td> {{item.FechaCompra}} </td>
+				<td> {{item.FechaLlegada}} </td>
+				<td> {{item.NumeroAsiento}} </td>
+				<td> {{item.Precio}} </td>
+				<td> {{item.Origen}} </td>
+				<td> {{item.Destino}} </td>
+
+
+			</tr>
+			<tr v-for="item2 in info2">
+				<td> {{item2.Aerolinea}} </td>
+				<td> {{item2.FechaCompra}} </td>
+				<td> {{item2.FechaLlegada}} </td>
+				<td> {{item2.NumeroAsiento}} </td>
+				<td> {{item2.Precio}} </td>
+				<td> {{item2.Origen}} </td>
+				<td> {{item2.Destino}} </td>
+
+			</tr>
+
+
+		</tbody>
+
+	</table>
+
+	<table border="1">
+		Boletos
+		<thead>
+			<th>Aereolinea</th>
+			<th>Fecha Compra</th>
+			<th>Fecha Llegada</th>
+			<th>Número de asiento</th>
+			<th>Precio</th>
+			<th>Origen</th>
+			<th>Destino</th>
+
+		</thead>
+
+		<tbody>
+			<tr v-for="item in info">
+				<td> {{item.Aerolinea}} </td>
+				<td> {{item.FechaCompra}} </td>
+				<td> {{item.FechaLlegada}} </td>
+				<td> {{item.NumeroAsiento}} </td>
+				<td> {{item.Precio}} </td>
+				<td> {{item.Origen}} </td>
+				<td> {{item.Destino}} </td>
+
+
+			</tr>
+			<tr v-for="item2 in info2">
+				<td> {{item2.Aerolinea}} </td>
+				<td> {{item2.FechaCompra}} </td>
+				<td> {{item2.FechaLlegada}} </td>
+				<td> {{item2.NumeroAsiento}} </td>
+				<td> {{item2.Precio}} </td>
+				<td> {{item2.Origen}} </td>
+				<td> {{item2.Destino}} </td>
+
+			</tr>
+
+
+		</tbody>
+
+	</table>
+
+
+</div>
+
+<script>
+	Vue.createApp({
+		el: '#app',
+		data() {
+			return {
+				info: null,
+				info2: null
+			}
+		},
+		mounted() {
+			axios
+				.get("http://192.168.1.73/ap/index.php/Api/getAllBoletos")
+				.then(response => (this.info = response.data));
+			axios.get("http://192.168.1.73/ap/index.php/Api/getAllBoletos")
+				.then(response => (this.info2 = response.data));
+
+		}
+
+	}).mount("#app")
+</script>
